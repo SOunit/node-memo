@@ -9,6 +9,7 @@ const passport = require("passport");
 const initializePassport = require("./passport-config");
 const flash = require("express-flash");
 const session = require("express-session");
+const methodOverride = require("method-override");
 
 initializePassport(
   passport,
@@ -43,6 +44,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride("_method"));
 
 // protect route with middleware
 app.get("/", checkAuthenticated, (req, res) => {
@@ -85,8 +87,12 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 });
 
 app.delete("/logout", (req, res) => {
-  req.logOut();
-  req.redirect("/login");
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/login");
+  });
 });
 
 function checkAuthenticated(req, res, next) {
