@@ -10,3 +10,9 @@ node
 
 require('crypto').randomBytes(64).toString('hex')
 ```
+
+# refresh token
+
+- to set expire time
+- to stop permanent access allow
+- to prevent make user login manually again
