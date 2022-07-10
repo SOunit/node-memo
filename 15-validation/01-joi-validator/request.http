@@ -2,6 +2,12 @@ POST http://localhost:5000/signup
 Content-Type: application/json
 
 {
-    "email": "test",
-    "password": ""
+    "email": "test@test.com",
+    "password": "password",
+    "address": {
+        "state": "CA"
+    },
+    "DOB": "2010-01-01"
 }
+
+### 
