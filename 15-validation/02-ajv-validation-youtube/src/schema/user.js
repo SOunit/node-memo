@@ -1,11 +1,17 @@
-const ajv = require("./ajv-instance");
-
-const schema = {
+const userSchema = {
   type: "object",
   properties: {
-    foo: { type: "integer" },
-    bar: { type: "string" },
+    firstName: { type: "string" },
+    // format comes from ajv-format library
+    email: { type: "string", format: "email" },
+    dob: { type: "string", format: "date" },
+    countryCode: {
+      type: "string",
+      enum: ["US", "CA"],
+    },
   },
-  required: ["foo"],
+  required: ["firstName", "email", "dob", "countryCode"],
   additionalProperties: false,
 };
+
+module.exports = userSchema;
