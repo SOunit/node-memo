@@ -6,7 +6,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-app.post("/signup", (req, res) => {
+app.post("/register", (req, res) => {
   const postData = req.body;
   res.json(postData);
 });
