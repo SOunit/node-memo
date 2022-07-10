@@ -6,8 +6,8 @@
 # points
 
 - express includes body-parser package now
-  - json
-  - urlencoded
+  - json - for body in request
+  - urlencoded - for form request
 
 # sample
 

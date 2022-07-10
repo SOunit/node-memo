@@ -1,0 +1,3 @@
+- create a schema
+- schema has validate method
+- returns `error`, `value`
