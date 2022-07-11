@@ -3,11 +3,17 @@ Content-Type: application/json
 
 {
     "email": "test@test.com",
-    "password": "password",
-    "address": {
-        "state": "CA"
-    },
-    "DOB": "2010-01-01"
+    "password": "password"
+}
+
+### 
+
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "password"
 }
 
 ### 
