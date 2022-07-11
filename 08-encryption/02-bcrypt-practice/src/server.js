@@ -13,7 +13,7 @@ app.post("/signup", async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 12);
 
-  user = { email, hashedPassword };
+  user = { email, password: hashedPassword };
 
   res.json(user);
 });
@@ -21,13 +21,13 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   console.log("user", user);
-  console.log(`email, ${email}`);
-  console.log(`password, ${password}`);
+  console.log(`post data ${email}`);
+  console.log(`password ${password}`);
 
-  if (email === user.email && password === user.password) {
-    const hashedPassword = await bcrypt.hash(password, 12);
+  const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
-    res.json({ email, hashedPassword });
+  if (email === user.email && isPasswordCorrect) {
+    res.json(user);
   } else {
     next(new Error("Login failed: No User Found"));
   }
