@@ -27,3 +27,36 @@
   .skip((page - 1) * ITEMS_PER_PAGE)
   .limit(ITEMS_PER_PAGE)
   ```
+
+- make page dynamic / backend
+
+  - fetch document count
+    ```
+    const totalItems = find().count()
+    ```
+  - check if next page exist
+    ```
+    ITEMS_PER_PAGE * page < totalItems
+    ```
+  - has prev page
+    ```
+    const hasPrevPage = page > 1
+    ```
+  - next page
+    ```
+    const nextPage = page + 1
+    ```
+  - previous page
+    ```
+    const previousPage = page - 1
+    ```
+  - last page
+    ```
+    // 5.5 -> 6
+    Math.ceil(totalItems / ITEMS_PER_PAGE)
+    ```
+
+- make page dynamic / frontend
+
+  - 1st page
+  - current page
